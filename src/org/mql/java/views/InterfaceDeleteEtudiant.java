@@ -16,6 +16,8 @@ public class InterfaceDeleteEtudiant extends JFrame {
 	private JPanel containerButton;
 	private Button confirmer;
 	private Button annuler;
+	private JPanel errorMsgDeletePanel;
+	private JLabel errorMsgDeleteLabel;
 
 	public InterfaceDeleteEtudiant() {
 		labelTittle = new JLabel("Supprimer  un etudiant !!");
@@ -26,6 +28,8 @@ public class InterfaceDeleteEtudiant extends JFrame {
 		container.add(confirmer);
 		annuler = new Button("Annuler Delete");
 		container.add(annuler);
+		 errorMsgDeleteLabel = new JLabel("");
+		  errorMsgDeletePanel = new JPanel();
 	}
 	public void drawInterfaceDelete () {
 		container.setLayout(new BoxLayout(container, BoxLayout.Y_AXIS));
@@ -38,7 +42,9 @@ public class InterfaceDeleteEtudiant extends JFrame {
 		containerButton.add(confirmer, BorderLayout.SOUTH);
 		containerButton.add(annuler, BorderLayout.SOUTH);
 		container.add(containerButton);
-		pack();
+		errorMsgDeletePanel.add(errorMsgDeleteLabel);
+		container.add(errorMsgDeletePanel);
+		setSize(500,200);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setVisible(true);
@@ -50,6 +56,13 @@ public class InterfaceDeleteEtudiant extends JFrame {
 	public void setLabeledCode(LabledTextField labeledCode) {
 		this.labeledCode = labeledCode;
 	}
+	public JLabel getErrorMsgDeleteLabel() {
+		return errorMsgDeleteLabel;
+	}
+	public void setErrorMsgDeleteLabel(JLabel errorMsgDeleteLabel) {
+		this.errorMsgDeleteLabel = errorMsgDeleteLabel;
+	}
+	
 	
 
 }

@@ -11,7 +11,7 @@ public class ParseEtudiants {
 	private XmlParser parse;
 	private Vector<String > noms ;
 	private Vector<String> prenoms;
-	private Vector<Integer> ages;
+	private Vector<String> ages;
 	private Vector<String> emails;
 	private Vector<String>  tels;
 	private Vector<String> codesEtudiants;
@@ -20,7 +20,7 @@ public class ParseEtudiants {
 		this.parse = parse;
 		noms = new Vector<String>();
 		prenoms = new Vector<String>();
-		ages = new Vector<Integer>();
+		ages = new Vector<>();
 		emails = new Vector<String>();
 		tels = new Vector<>();
 		codesEtudiants = new Vector<String>();
@@ -45,17 +45,22 @@ public class ParseEtudiants {
 
 				}
 				else if( childNode.getNodeName().equals("age")) {
-					Integer age = Integer.parseInt(childNode.getTextContent());
+					try {
+					String  age = (childNode.getTextContent());
 					ages.add(age);
+					}
+					catch (Exception e) {
+						System.out.println("erreur dans le parse ");
+					}
+					
 				}
 				else if( childNode.getNodeName().equals("email")) {
 					String email = childNode.getTextContent();
 					emails.add(email);
 				}
 				else if( childNode.getNodeName().equals("tel")) {
-					
-					Long tel = Long.parseLong(childNode.getTextContent());
-					tels.add("0"+tel);
+					String tel = childNode.getTextContent();
+					tels.add(tel);
 				}
 
 			}
@@ -82,10 +87,10 @@ public class ParseEtudiants {
 	public void setPrenoms(Vector<String> prenoms) {
 		this.prenoms = prenoms;
 	}
-	public Vector<Integer> getAges() {
+	public Vector<String> getAges() {
 		return ages;
 	}
-	public void setAges(Vector<Integer> ages) {
+	public void setAges(Vector<String> ages) {
 		this.ages = ages;
 	}
 	public Vector<String> getEmail() {

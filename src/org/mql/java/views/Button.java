@@ -155,12 +155,17 @@ public class Button extends JButton implements ActionListener {
 			if(formDelete!= null) {
 
 				this.deleteTextField = formDelete.getLabeledCode().getT1();
+				if(deleteTextField.getText().isEmpty()) {
+					formDelete.getErrorMsgDeleteLabel().setText("Erreur : champ est vide");
+				}
+				else {
 				String pathProject = "C:\\projects java\\xml_project_el mehdi_amarti_riffi\\resources\\etudiants.xml";
 				XmlParser parse = new XmlParser(pathProject);
 				DeleteEtudiantWithId parseId = new DeleteEtudiantWithId(parse);
 				parseId.deleteEtudiantWithId(deleteTextField.getText(), pathProject);
 				parse.writeToFile(pathProject);
 				formDelete.setVisible(false);
+				}
 			}
 		}
 		else if("Annuler Delete".equals(label)) {
@@ -179,6 +184,10 @@ public class Button extends JButton implements ActionListener {
 				this.textFieldAge = formUpdate.getLabeledAge().getT1();
 				this.textFieldEmail = formUpdate.getLabeledEmail().getT1();
 				this.textFieldTel = formUpdate.getLabeledTel().getT1();
+				if(textFieldCodeOld.getText().isEmpty()||textFieldNom.getText().isEmpty()||textFieldPrenom.getText().isEmpty()||textFieldAge.getText().isEmpty()||textFieldEmail.getText().isEmpty()||textFieldTel.getText().isEmpty()) {
+					formUpdate.getErrorMsgUpdateLabel().setText("Erreur : champ est vide");
+				}
+				else {
 				String pathProject = "C:\\projects java\\xml_project_el mehdi_amarti_riffi\\resources\\etudiants.xml";
 				XmlParser parse = new XmlParser(pathProject);
 				UpdateEtudiantWithId update = new UpdateEtudiantWithId(parse);
@@ -190,6 +199,7 @@ public class Button extends JButton implements ActionListener {
 				parse.writeToFile(pathProject);
 				formUpdate.setVisible(false);
 
+			}
 			}
 		}
 		else if("Annuler Update".equals(label)) {

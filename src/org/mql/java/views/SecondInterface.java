@@ -65,7 +65,7 @@ public class SecondInterface extends JFrame  {
 		Vector<String> codes = parseEtudiant.getCodesEtudiants();
 		Vector<String> noms = parseEtudiant.getNoms();
 		Vector<String>  prenoms = parseEtudiant.getPrenoms();
-		Vector<Integer> ages = parseEtudiant.getAges();
+		Vector<String> ages = parseEtudiant.getAges();
 		Vector<String > emails = parseEtudiant.getEmail();
 		Vector<String> tels = parseEtudiant.getTels();
 	
